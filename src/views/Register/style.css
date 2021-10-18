@@ -1,0 +1,30 @@
+body{
+    background-color: #282c34;
+}
+
+form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 10vh;
+}
+form h1{
+    margin: auto;
+    color: white;
+    margin-bottom: 10px;
+}
+form input,
+form button {
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    max-width: 350px;
+    font-size: 1.4rem;
+    margin: 2px auto;
+    padding: 6px;
+}
+form button{
+    margin-top: 20px;
+    cursor: pointer;
+    padding: 8px;
+}
