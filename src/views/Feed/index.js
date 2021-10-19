@@ -1,6 +1,5 @@
 import { React, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './style.css';
 import api from '../../services/api';
 
 export default function Feed(){

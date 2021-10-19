@@ -1,8 +1,8 @@
 import { React, useState} from 'react';
-import './style.css';
 import api from '../../services/api';
 import { Link, useHistory } from 'react-router-dom';
- 
+import { Container, TextField, Button, Stack } from '@material-ui/core'; 
+import { ArrowBackTwoTone } from '@material-ui/icons';
 export default function Register(){
 
     const [firstName, setFirstName] = useState('');
@@ -26,18 +26,32 @@ export default function Register(){
             .catch(error => window.alert(error.response.data.msgClient));
     }
     return(
-        <div>
-            <form onSubmit={handleRegister}>
-                <h1>Cadastro</h1>
-                <input onChange={e => setFirstName(e.target.value)} type="text"  placeholder="Nome"/>
-                <input onChange={e => setMidleName(e.target.value)} type="text" placeholder="Sobrenome"/>
-                <input onChange={e => setAge(e.target.value)} type="number" placeholder="Idade"/>
-                <input onChange={e => setCity(e.target.value)} type="text" placeholder="Cidade"/>
-                <input onChange={e => setUf(e.target.value)} type="text" placeholder="UF"/>
-                <input onChange={e => setEmail(e.target.value)} type="text" placeholder="E-mail"/>
-                <input onChange={e => setPassword(e.target.value)} type="password" placeholder="Senha"/>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <Stack 
+        direction={{ xs: 'column' }}
+        spacing={{ xs: 1, sm: 2, md: 4 }}
+        component="form"
+        onSubmit={handleRegister}
+        maxWidth='700px'
+        padding='30px'
+        gap='14px'
+        margin='auto'
+        >
+            <Button variant="outlined" href='/login' sx={{ width: 90, height: 40 }}>
+                <ArrowBackTwoTone
+                color='primary'
+                sx={{ fontSize: 40, fontWeight: 800 }}
+                />
+            </Button>
+
+            <h1>Cadastro</h1>
+            <TextField id="outlined-basic" onChange={e => setFirstName(e.target.value)} label="First Name" type="text" variant="outlined" />
+            <TextField id="outlined-basic" onChange={e => setMidleName(e.target.value)} label="Midle Name" type="text" variant="outlined"/>
+            <TextField id="outlined-basic" onChange={e => setAge(e.target.value)} label="Age" type="text" variant="outlined"/>
+            <TextField id="outlined-basic" onChange={e => setCity(e.target.value)} label="City" type="text" variant="outlined"/>
+            <TextField id="outlined-basic" onChange={e => setUf(e.target.value)} label="State" type="text" variant="outlined"/>
+            <TextField id="outlined-basic" onChange={e => setEmail(e.target.value)} label="E-mail" type="text" variant="outlined"/>
+            <TextField id="outlined-basic" onChange={e => setPassword(e.target.value)} label="Password" type="password" variant="outlined"/>
+            <Button sx={{ height: 60, fontSize: 20 }} type="submit" variant="contained">Register</Button>
+        </Stack>
     )
 }
